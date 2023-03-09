@@ -6,7 +6,7 @@
 /*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 19:22:25 by mnurlybe          #+#    #+#             */
-/*   Updated: 2023/02/22 20:03:08 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2023/03/09 19:46:33 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_putzero(int j)
 	return (i);
 }
 
-int	ft_putsigns(FLAGS *flags, SPECIFIERS *sp)
+int	ft_putsigns(t_flags *flags, t_specifiers *sp)
 {
 	if ((sp->d || sp->i) && flags->is_negative)
 		return (ft_putstr_utils("-", 1));

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 15:58:06 by vzhadan           #+#    #+#             */
-/*   Updated: 2023/02/23 21:05:10 by mnurlybe         ###   ########.fr       */
+/*   Created: 2023/03/09 20:03:48 by mnurlybe          #+#    #+#             */
+/*   Updated: 2023/03/09 20:03:50 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  *	Makes number positive (with respect to overflow).
  *	assigns {flags->is_negative} equal to one.
 */
-unsigned int	ft_make_number_positive(int num, FLAGS *flags, char letter)
+unsigned int	ft_make_number_positive(int num, t_flags *flags, char letter)
 {
 	unsigned int	u_num;
 

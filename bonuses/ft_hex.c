@@ -6,14 +6,13 @@
 /*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 19:41:10 by mnurlybe          #+#    #+#             */
-/*   Updated: 2023/02/23 20:54:37 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:02:39 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "../ft_printf.h"
 
-int	ft_putsigns_hex(FLAGS *flags, SPECIFIERS *sp)
+int	ft_putsigns_hex(t_flags *flags, t_specifiers *sp)
 {
 	if ((sp->x || sp->p) && flags->is_hash)
 	{
@@ -21,7 +20,7 @@ int	ft_putsigns_hex(FLAGS *flags, SPECIFIERS *sp)
 		ft_putstr_utils("x", 1);
 		return (2);
 	}
-	if ((sp->X) && flags->is_hash)
+	if ((sp->xcap) && flags->is_hash)
 	{
 		ft_putstr_utils("0", 1);
 		ft_putstr_utils("X", 1);
@@ -30,7 +29,7 @@ int	ft_putsigns_hex(FLAGS *flags, SPECIFIERS *sp)
 	return (0);
 }
 
-int	ft_no_width_hex(char *str, FLAGS *flags, SPECIFIERS *sp, int len)
+int	ft_no_width_hex(char *str, t_flags *flags, t_specifiers *sp, int len)
 {
 	int	printed;
 
@@ -43,7 +42,7 @@ int	ft_no_width_hex(char *str, FLAGS *flags, SPECIFIERS *sp, int len)
 	return (printed);
 }
 
-int	ft_width_dash_hex(char *str, FLAGS *flags, SPECIFIERS *sp, int len)
+int	ft_width_dash_hex(char *str, t_flags *flags, t_specifiers *sp, int len)
 {
 	int	printed;
 
@@ -64,7 +63,7 @@ int	ft_width_dash_hex(char *str, FLAGS *flags, SPECIFIERS *sp, int len)
 	return (printed);
 }
 
-int	ft_width_no_dash_hex(char *str, FLAGS *flags, SPECIFIERS *sp, int len)
+int	ft_width_no_dash_hex(char *str, t_flags *flags, t_specifiers *sp, int len)
 {
 	int	printed;
 
@@ -93,7 +92,7 @@ int	ft_width_no_dash_hex(char *str, FLAGS *flags, SPECIFIERS *sp, int len)
 	return (printed);
 }
 
-int	ft_hex(char *str, FLAGS *flags, SPECIFIERS *sp)
+int	ft_hex(char *str, t_flags *flags, t_specifiers *sp)
 {
 	int	len;
 	int	printed;

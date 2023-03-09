@@ -3,28 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzhadan <vzhadan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 19:56:42 by vzhadan           #+#    #+#             */
-/*   Updated: 2023/01/28 14:51:52 by vzhadan          ###   ########.fr       */
+/*   Created: 2023/01/17 13:24:51 by mnurlybe          #+#    #+#             */
+/*   Updated: 2023/01/23 19:59:34 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
- *	Returns a pointer to the last occurrence of character {c} in the C string {s}.
-*/
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	size_t			terminator_index;
+	unsigned char	c_char;
+	char			*ptr_char;
 
-	i = ft_strlen(s);
-	while (i >= 0)
+	c_char = c;
+	ptr_char = 0;
+	if (c == 0)
 	{
-		if (*((char *)s + i) == (char )c)
-			return ((char *)s + i);
-		i--;
+		terminator_index = ft_strlen(s);
+		return ((char *)s + terminator_index);
 	}
-	return (NULL);
+	else
+	{
+		while (*s)
+		{
+			if (c_char == *s)
+				ptr_char = (char *)s;
+			s++;
+		}
+		return (ptr_char);
+	}
 }

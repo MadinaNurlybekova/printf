@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzhadan <vzhadan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 19:31:21 by vzhadan           #+#    #+#             */
-/*   Updated: 2023/01/28 13:33:42 by vzhadan          ###   ########.fr       */
+/*   Created: 2023/01/13 16:03:07 by mnurlybe          #+#    #+#             */
+/*   Updated: 2023/01/23 19:18:41 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
- *	Makes {n} values of pointer {s} equal to zero
-*/
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*p;
+	unsigned char	*s_ptr;
+	size_t			i;
 
-	p = (unsigned char *)s;
-	while (n--)
-		*(p++) = 0;
+	i = 0;
+	s_ptr = (unsigned char *)s;
+	while (i < n)
+	{
+		s_ptr[i] = 0;
+		i++;
+	}
 }

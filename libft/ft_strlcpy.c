@@ -3,41 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzhadan <vzhadan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 16:03:47 by vzhadan           #+#    #+#             */
-/*   Updated: 2023/01/28 15:07:45 by vzhadan          ###   ########.fr       */
+/*   Created: 2023/01/17 09:51:14 by mnurlybe          #+#    #+#             */
+/*   Updated: 2023/01/23 19:56:34 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
- *	The contents of string {src} are copied into buffer {dst}.
- *	Only {size} characters maximum are copied,
- *	and the value returned is the size of string {src}.
- *	(The value returned is always the size of string {src},
- *	regardless of how many characters are copied.)
-*/
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	unsigned char	*d;
-	unsigned char	*s;
-	size_t			len;
+	size_t	src_len;
 
-	len = 0;
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	if (size > 0)
+	src_len = ft_strlen(src);
+	if (size == 0)
+		return (src_len);
+	else if (src_len >= size)
 	{
-		while (--size && *(s + len))
-		{
-			*(d + len) = *(s + len);
-			len++;
-		}
-		*(d + len) = 0;
+		ft_memcpy(dst, src, size - 1);
+		dst[size - 1] = 0;
 	}
-	while (*(src + len))
-		len++;
-	return (len);
+	else
+	{
+		ft_memcpy(dst, src, src_len + 1);
+	}
+	return (src_len);
 }

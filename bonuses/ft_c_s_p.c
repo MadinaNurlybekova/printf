@@ -6,14 +6,13 @@
 /*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:44:10 by mnurlybe          #+#    #+#             */
-/*   Updated: 2023/02/23 19:58:07 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:00:06 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "../ft_printf.h"
 
-int	ft_c_s_p_width(char *str, FLAGS *flags, int len)
+int	ft_c_s_p_width(char *str, t_flags *flags, int len)
 {
 	int	printed;
 
@@ -31,7 +30,7 @@ int	ft_c_s_p_width(char *str, FLAGS *flags, int len)
 	return (printed);
 }
 
-int	ft_c_s_p(char *str, FLAGS *flags, SPECIFIERS *sp)
+int	ft_c_s_p(char *str, t_flags *flags, t_specifiers *sp)
 {
 	int	len;
 	int	printed;

@@ -6,13 +6,13 @@
 /*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:08:53 by mnurlybe          #+#    #+#             */
-/*   Updated: 2023/02/23 21:19:43 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2023/03/09 19:51:36 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void	ft_switch_for_flags(char c, FLAGS *flags)
+void	ft_switch_for_flags(char c, t_flags *flags)
 {
 	if (c == '.')
 		flags->is_dot = 1;
@@ -26,7 +26,7 @@ void	ft_switch_for_flags(char c, FLAGS *flags)
 		flags->is_dash = 1;
 }
 
-void	ft_switch_for_sp(char c, SPECIFIERS *sp)
+void	ft_switch_for_sp(char c, t_specifiers *sp)
 {
 	if (c == 'c')
 		sp->c = 1;
@@ -43,7 +43,7 @@ void	ft_switch_for_sp(char c, SPECIFIERS *sp)
 	else if (c == 'x')
 		sp->x = 1;
 	else if (c == 'X')
-		sp->X = 1;
+		sp->xcap = 1;
 	else if (c == 'u')
 		sp->u = 1;
 }
@@ -53,12 +53,12 @@ void	ft_add_to_number(char c, int *prev_number)
 	(*prev_number) = (*prev_number) * 10 + (c - '0');
 }
 
-void	ft_fill_pr_width(char c, FLAGS *flags)
+void	ft_fill_pr_width(char c, t_flags *flags)
 {
 	ft_add_to_number(c, &(flags->pr_width));
 }
 
-void	ft_fill_width(char c, FLAGS *flags)
+void	ft_fill_width(char c, t_flags *flags)
 {
 	ft_add_to_number(c, &(flags->width));
 }

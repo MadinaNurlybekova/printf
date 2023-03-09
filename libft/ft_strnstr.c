@@ -3,39 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzhadan <vzhadan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 20:38:02 by vzhadan           #+#    #+#             */
-/*   Updated: 2023/01/28 15:09:10 by vzhadan          ###   ########.fr       */
+/*   Created: 2023/01/17 14:04:57 by mnurlybe          #+#    #+#             */
+/*   Updated: 2023/01/23 19:59:27 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
- *	Locates the first occurrence of the null-terminated string {needle} in
- *	the string {haystack}, where not more than {n} characters are searched. 
- *	Characters that appear after a ‘\0’ character are not searched. 
-*/
-char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	len_of_needle;
 	size_t	i;
+	size_t	little_len;
 
+	if (!*little)
+		return ((char *)big);
+	little_len = ft_strlen(little);
 	i = 0;
-	if (!(*needle))
-		return ((char *)haystack);
-	if (!n)
-		return (NULL);
-	len_of_needle = ft_strlen(needle);
-	while (i < n)
+	while (i < len)
 	{
-		if (!(*haystack) || (len_of_needle > n - i))
-			return (NULL);
-		if (!ft_strncmp(haystack, needle, len_of_needle))
-			return ((char *)haystack);
-		haystack++;
+		if (!*big || (little_len > len - i))
+			return (0);
+		if (ft_strncmp(big, little, little_len) == 0)
+			return ((char *)big);
 		i++;
+		big++;
 	}
-	return (NULL);
+	return (0);
 }

@@ -3,41 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzhadan <vzhadan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 17:55:39 by vzhadan           #+#    #+#             */
-/*   Updated: 2023/01/28 14:09:31 by vzhadan          ###   ########.fr       */
+/*   Created: 2023/01/13 12:25:50 by mnurlybe          #+#    #+#             */
+/*   Updated: 2023/01/23 19:46:43 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
- *	Copies {n} bytes from memory area {src} to memory area {dest}. 
- *	The memory areas may overlap!
- *	Returns a pointer to {dest}.
-*/
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*d;
-	char	*s;
-	size_t	i;
+	char		*dest_ptr;
+	const char	*src_ptr;
 
-	i = 0;
-	d = (char *)dest;
-	s = (char *)src;
-	if (!dest && !src)
-		return (NULL);
-	if (dest > src)
-		while (n--)
-			*(d + n) = *(s + n);
-	else
+	src_ptr = (const char *)src;
+	dest_ptr = (char *)dest;
+	if (src_ptr == dest_ptr)
+		return (dest);
+	else if (src_ptr < dest_ptr)
 	{
-		while (i < n)
-		{
-			*(d + i) = *(s + i);
-			i++;
-		}
+		src_ptr += n - 1;
+		dest_ptr += n - 1;
+		while (n--)
+			*dest_ptr-- = *src_ptr--;
+	}
+	else if (dest_ptr <= src_ptr)
+	{
+		while (n--)
+			*dest_ptr++ = *src_ptr++;
 	}
 	return (dest);
 }

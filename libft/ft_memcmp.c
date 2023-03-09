@@ -3,32 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzhadan <vzhadan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 20:29:44 by vzhadan           #+#    #+#             */
-/*   Updated: 2023/01/28 14:04:12 by vzhadan          ###   ########.fr       */
+/*   Created: 2023/01/13 15:11:26 by mnurlybe          #+#    #+#             */
+/*   Updated: 2023/01/23 19:45:51 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
- *	Compares the first n bytes of memory area {s1} and memory area {s2}.
- * 	Returns difference of first bytes that differ as {str1[i] - str2[i]}
-*/
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned char	*str1;
-	unsigned char	*str2;
 	size_t			i;
+	unsigned char	*s1_ptr;
+	unsigned char	*s2_ptr;
 
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
+	s1_ptr = (unsigned char *)s1;
+	s2_ptr = (unsigned char *)s2;
 	i = 0;
+	if ((n == 0) || (s1 == s2))
+		return (0);
 	while (i < n)
 	{
-		if (str1[i] != str2[i])
-			return (str1[i] - str2[i]);
+		if (s1_ptr[i] != s2_ptr[i])
+			return (s1_ptr[i] - s2_ptr[i]);
 		i++;
 	}
 	return (0);

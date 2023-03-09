@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 16:12:45 by vzhadan           #+#    #+#             */
-/*   Updated: 2023/02/22 20:03:18 by mnurlybe         ###   ########.fr       */
+/*   Created: 2023/03/09 20:04:13 by mnurlybe          #+#    #+#             */
+/*   Updated: 2023/03/09 20:04:22 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void	ft_init_flags(FLAGS *flags)
+void	ft_init_flags(t_flags *flags)
 {
 	flags->is_negative = 0;
 	flags->is_dash = 0;
@@ -25,7 +25,7 @@ void	ft_init_flags(FLAGS *flags)
 	flags->pr_width = 0;
 }
 
-void	ft_init_specifiers(SPECIFIERS *sp)
+void	ft_init_specifiers(t_specifiers *sp)
 {
 	sp->c = 0;
 	sp->s = 0;
@@ -33,12 +33,12 @@ void	ft_init_specifiers(SPECIFIERS *sp)
 	sp->i = 0;
 	sp->u = 0;
 	sp->x = 0;
-	sp->X = 0;
+	sp->xcap = 0;
 	sp->p = 0;
 	sp->percent = 0;
 }
 
-void	ft_init(FLAGS *f, SPECIFIERS *sp)
+void	ft_init(t_flags *f, t_specifiers *sp)
 {
 	ft_init_flags(f);
 	ft_init_specifiers(sp);

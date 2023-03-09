@@ -3,29 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzhadan <vzhadan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 20:14:08 by vzhadan           #+#    #+#             */
-/*   Updated: 2023/01/28 14:00:16 by vzhadan          ###   ########.fr       */
+/*   Created: 2023/01/13 14:10:04 by mnurlybe          #+#    #+#             */
+/*   Updated: 2023/01/23 19:45:40 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
- *	Searches for the first occurrence of the character {c} (an unsigned char) 
- *	in the first {n} bytes of the string pointed to, by the argument {str}.
-*/
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*str;
+	unsigned char	*s_ptr;
+	void			*found_ptr;
+	size_t			i;
 
-	str = (unsigned char *)s;
-	while (n--)
+	s_ptr = (unsigned char *)s;
+	i = 0;
+	while (i < n)
 	{
-		if (*(str) == (unsigned char )c)
-			return (str);
-		str++;
+		if (s_ptr[i] == (unsigned char)c)
+		{
+			found_ptr = &s_ptr[i];
+			return (found_ptr);
+		}
+		else
+			i++;
 	}
-	return (NULL);
-}	
+	return (0);
+}

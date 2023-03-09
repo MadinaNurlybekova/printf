@@ -3,25 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzhadan <vzhadan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 19:44:03 by vzhadan           #+#    #+#             */
-/*   Updated: 2023/01/28 14:30:11 by vzhadan          ###   ########.fr       */
+/*   Created: 2023/01/17 12:15:53 by mnurlybe          #+#    #+#             */
+/*   Updated: 2023/01/23 19:53:17 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
- * 	Searches for the first occurrence of the character {c} (an unsigned char) 
- *	in the string pointed to by the argument {s}.
-*/
 char	*ft_strchr(const char *s, int c)
 {
-	if (*s == (char )c)
-		return ((char *)s);
-	while (*(s++))
-		if (*(char *)s == (char )c)
-			return ((char *)s);
-	return (NULL);
+	size_t			terminator_index;
+	unsigned char	c_char;
+
+	c_char = c;
+	if (c == 0)
+	{
+		terminator_index = ft_strlen(s);
+		return ((char *)s + terminator_index);
+	}
+	else
+	{
+		while (*s)
+		{
+			if (c_char == *s)
+				return ((char *)s);
+			s++;
+		}
+		return (0);
+	}
 }

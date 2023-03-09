@@ -3,66 +3,77 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzhadan <vzhadan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 17:34:32 by vzhadan           #+#    #+#             */
-/*   Updated: 2023/01/31 17:05:40 by vzhadan          ###   ########.fr       */
+/*   Created: 2023/01/20 12:32:26 by mnurlybe          #+#    #+#             */
+/*   Updated: 2023/01/23 19:36:02 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
- *	Function get_num_of_digits returns number of digits in the number
-*/
-size_t	get_num_of_digits(int n)
+static int	ft_count_digits(long int n)
 {
-	size_t	num;
+	int	counter;
 
-	num = 0;
-	if (n == 0)
-		return (1);
+	counter = 0;
 	if (n < 0)
 	{
 		n *= -1;
-		num++;
+		counter++;
 	}
 	while (n > 0)
 	{
-		num++;
-		n /= 10;
+		n = n / 10;
+		counter++;
 	}
-	return (num);
+	return (counter);
 }
 
-/*
- *	Makes string representation of the number,
- * 	allocates memory for the string and returns it. 
-*/
-char	*ft_itoa(int n)
-{	
-	char	*str_num;
-	size_t	num_of_digits;
+static void	ft_numcpy(char *s, long int n, size_t size)
+{
+	int			i;
+	int			len;
+	long int	nb;
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	num_of_digits = get_num_of_digits(n);
-	str_num = (char *)malloc((num_of_digits + 1) * sizeof(char));
-	if (!str_num)
-		return (NULL);
-	str_num[num_of_digits--] = 0;
+	i = 0;
+	nb = n;
+	s[size] = '\0';
+	len = size - 1;
+	while (nb > 0)
+	{
+		s[len] = nb % 10 + '0';
+		nb = nb / 10;
+		len--;
+		i++;
+	}
+}
+
+char	*ft_itoa(int n)
+{
+	char		*s;
+	size_t		size;
+	long int	nb;
+
+	nb = n;
+	size = ft_count_digits(nb);
 	if (n == 0)
-		return (ft_strdup("0"));
+	{
+		s = (char *)malloc(sizeof(char) * 2);
+		if (!s)
+			return (0);
+		s[0] = '0';
+		s[1] = '\0';
+		return (s);
+	}
+	s = (char *)malloc(sizeof(char) * size + 1);
+	if (!s)
+		return (0);
 	if (n < 0)
 	{
-		str_num[0] = '-';
-		n *= -1;
+		nb = nb * -1;
+		s[0] = '-';
 	}
-	while (n > 0)
-	{
-		str_num[num_of_digits] = n % 10 + '0';
-		n /= 10;
-		num_of_digits--;
-	}
-	return (str_num);
+	ft_numcpy(s, nb, size);
+	return (s);
 }

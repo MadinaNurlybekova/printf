@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vzhadan <vzhadan@student.42.fr>            +#+  +:+       +#+         #
+#    By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/28 15:13:02 by vzhadan           #+#    #+#              #
-#    Updated: 2023/02/13 18:39:54 by vzhadan          ###   ########.fr        #
+#    Created: 2022/10/29 15:22:17 by mnurlybe          #+#    #+#              #
+#    Updated: 2023/01/23 20:16:13 by mnurlybe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,14 +40,14 @@ MY_SOURCES = ft_isalnum.c \
 	ft_strtrim.c \
 	ft_split.c \
 	ft_itoa.c \
-	ft_strmapi.c \
-	ft_striteri.c \
 	ft_putchar_fd.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
-	ft_putnbr_fd.c 
-	
-BONUS =	ft_lstnew.c \
+	ft_putnbr_fd.c \
+	ft_strmapi.c \
+	ft_striteri.c
+
+MY_BONUS_SOURCES = ft_lstnew.c \
 	ft_lstadd_front.c \
 	ft_lstsize.c \
 	ft_lstlast.c \
@@ -56,14 +56,14 @@ BONUS =	ft_lstnew.c \
 	ft_lstclear.c \
 	ft_lstiter.c \
 	ft_lstmap.c
-
-BONUS_OBJS = $(BONUS:.c=.o)
+	
+					
 	     
-
 MY_HEADER = libft.h
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 
+MY_BONUS_OBJECTS = $(MY_BONUS_SOURCES:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -72,14 +72,18 @@ CFLAGS = -Wall -Wextra -Werror
 
 $(NAME): $(MY_OBJECTS)
 	ar rcs $(NAME) $(MY_OBJECTS)
+	
+so:
+	gcc -nostartfiles -fPIC $(CFLAGS) $(MY_SOURCES) $(MY_BONUS_SOURCES)
+	gcc -nostartfiles -shared -o libft.so $(MY_OBJECTS) $(MY_BONUS_OBJECTS)
+
+bonus:	$(MY_BONUS_OBJECTS)
+	ar rcs $(NAME) $(MY_BONUS_OBJECTS)
 
 all: $(NAME)
 
-
-bonus:	$(OBJS) $(BONUS_OBJS)
-	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 clean:
-	rm -f $(MY_OBJECTS)
+	rm -f $(MY_OBJECTS) $(MY_BONUS_OBJECTS)
 
 fclean: clean
 	rm -f $(NAME)

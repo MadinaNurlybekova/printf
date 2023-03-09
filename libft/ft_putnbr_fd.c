@@ -3,35 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzhadan <vzhadan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 19:20:32 by vzhadan           #+#    #+#             */
-/*   Updated: 2023/01/28 14:12:59 by vzhadan          ###   ########.fr       */
+/*   Created: 2023/01/20 15:35:47 by mnurlybe          #+#    #+#             */
+/*   Updated: 2023/01/23 19:48:57 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
- *	Outputs the integer {n} to the given file descriptor {fd}.
-*/
+static void	positive_number(int nb, int fd)
+{
+	char	c;
+	char	arr[20];
+	int		i;
+	int		len;
+
+	i = 0;
+	while (nb > 0)
+	{
+		c = (nb % 10) + '0';
+		arr[i] = c;
+		nb = nb / 10;
+		i++;
+	}
+	len = i - 1;
+	while (len >= 0)
+	{
+		ft_putchar_fd(arr[len], fd);
+		len--;
+	}
+}
+
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n == -2147483648)
+	int	nb;
+
+	nb = n;
+	if (nb == 0)
+		ft_putchar_fd('0', fd);
+	else if (nb > 0)
 	{
-		write(fd, "-2147483648", 11);
-		return ;
+		positive_number(nb, fd);
 	}
-	if (n < 0)
-	{
-		n *= -1;
-		write(fd, "-", 1);
-	}
-	if (n >= 10)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
-	}
+	else if (nb == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
 	else
-		ft_putchar_fd(n + '0', fd);
+	{
+		nb = nb * (-1);
+		ft_putchar_fd('-', fd);
+		positive_number(nb, fd);
+	}
 }

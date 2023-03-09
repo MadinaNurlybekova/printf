@@ -6,14 +6,13 @@
 /*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 14:00:29 by mnurlybe          #+#    #+#             */
-/*   Updated: 2023/02/22 20:03:03 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:02:34 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "../ft_printf.h"
 
-int	ft_no_width(char *str, FLAGS *flags, SPECIFIERS *sp, int len)
+int	ft_no_width(char *str, t_flags *flags, t_specifiers *sp, int len)
 {
 	int	printed;
 
@@ -26,7 +25,7 @@ int	ft_no_width(char *str, FLAGS *flags, SPECIFIERS *sp, int len)
 	return (printed);
 }
 
-int	ft_width_dash(char *str, FLAGS *flags, SPECIFIERS *sp, int len)
+int	ft_width_dash(char *str, t_flags *flags, t_specifiers *sp, int len)
 {
 	int	printed;
 
@@ -47,7 +46,7 @@ int	ft_width_dash(char *str, FLAGS *flags, SPECIFIERS *sp, int len)
 	return (printed);
 }
 
-int	ft_width_no_dash(char *str, FLAGS *flags, SPECIFIERS *sp, int len)
+int	ft_width_no_dash(char *str, t_flags *flags, t_specifiers *sp, int len)
 {
 	int	printed;
 
@@ -76,7 +75,7 @@ int	ft_width_no_dash(char *str, FLAGS *flags, SPECIFIERS *sp, int len)
 	return (printed);
 }
 
-int	ft_d_i_u(char *str, FLAGS *flags, SPECIFIERS *sp)
+int	ft_d_i_u(char *str, t_flags *flags, t_specifiers *sp)
 {
 	int	len;
 	int	printed;

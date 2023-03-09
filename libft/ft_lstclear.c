@@ -3,33 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzhadan <vzhadan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 21:02:18 by vzhadan           #+#    #+#             */
-/*   Updated: 2023/01/28 15:05:30 by vzhadan          ###   ########.fr       */
+/*   Created: 2023/01/23 18:38:01 by mnurlybe          #+#    #+#             */
+/*   Updated: 2023/01/23 19:39:11 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
- *	Deletes and frees the given node and every
- *	successor of that node, using the function ’del’ and free().
- *	The pointer to the list must be set to NULL.
-*/
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list	*current;
-	t_list	*next;
+	t_list	*temp;
 
-	if (!lst || !del)
+	if (!lst && !del)
 		return ;
-	current = *lst;
-	while (current)
+	while (*lst != NULL)
 	{
-		next = current->next;
-		ft_lstdelone(current, del);
-		current = next;
+		temp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = temp;
 	}
 	*lst = NULL;
 }
